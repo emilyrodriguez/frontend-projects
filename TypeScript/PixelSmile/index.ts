@@ -5,6 +5,13 @@ const imageData = createImageData();
 
 // draw head
 drawRectangle(0, 0, 20, 8);
+
+function drawDot(x: number, y: number) {
+  if (isPointInImage(x, y)) {
+    imageData[y * imageWidth + x] = true;
+  }
+}
+
 // eyes
 drawDot(7, 2);
 drawDot(12, 2);
