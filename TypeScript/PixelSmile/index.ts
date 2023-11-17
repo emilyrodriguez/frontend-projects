@@ -39,7 +39,7 @@ function drawRectangle(
  * @param y - The vertical position within
  * the image.
  */
-function isPointInImage(x: number, y?: number) {
+function isPointInImage(x: number, y: number) {
     return x >= 0 && x < imageWidth && y >= 0 && y < imageHeight;
 }
 
