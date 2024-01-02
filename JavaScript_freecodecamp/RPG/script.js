@@ -76,6 +76,12 @@ const locations = [
 		"button functions": [restart, restart, restart],
 		text: "You die. ☠️",
 	},
+    {
+        name: "win",
+        "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+		"button functions": [restart, restart, restart],
+		text: "You defeat the dragon! YOU WIN THE GAME! 🎉",
+    }
 ];
 
 //initialize buttons
@@ -176,9 +182,8 @@ function attack() {
 	text.innerText = "The " + monsters[fighting].name + " attacks.";
 	text.innerText +=
 		" You attack it with your " + weapons[currentWeapon].name + ".";
-	health -= monsters[fighting].level;
-	monsterHealth -=
-		weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    health -= getMonsterAttackValue(monsters[fighting].level);
+	monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
 	healthText.innerText = health;
 	monsterHealthText.innerText = monsterHealth;
 
@@ -187,6 +192,11 @@ function attack() {
 	} else if (monsterHealth <= 0) {
 		fighting === 2 ? winGame() : defeatMonster();
 	}
+}
+
+function getMonsterAttackValue(level) {
+    const hit = (level * 5) - (Math.floor(Math.random() * xp));
+    return hit > 0 ? hit : 0;
 }
 
 function dodge() {
@@ -204,6 +214,10 @@ function defeatMonster() {
 
 function lose() {
 	update(locations[5]);
+}
+
+function winGame() {
+    update(locations[6]);
 }
 
 function restart() {
