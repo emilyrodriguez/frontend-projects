@@ -17,22 +17,15 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const weapons = [
-	{
-		name: "stick",
-		power: 5,
-	},
-	{
-		name: "dagger",
-		power: 30,
-	},
-	{
-		name: "claw hammer",
-		power: 50,
-	},
-	{
-		name: "sword",
-		power: 100,
-	},
+	{ name: "stick", power: 5 },
+	{ name: "dagger", power: 30 },
+	{ name: "claw hammer", power: 50 },
+	{ name: "sword", power: 100 },
+];
+const monsters = [
+	{ name: "slime", level: 2, health: 15 },
+	{ name: "fanged beast", level: 8, health: 60 },
+	{ name: "dragon", level: 20, health: 300 },
 ];
 const locations = [
 	{
@@ -90,10 +83,6 @@ function goCave() {
 	update(locations[2]);
 }
 
-function fightDragon() {
-	console.log("Fighting dragon.");
-}
-
 function buyHealth() {
 	if (gold >= 10) {
 		gold -= 10;
@@ -106,15 +95,15 @@ function buyHealth() {
 }
 
 function sellWeapon() {
-    if (inventory.length > 1) {
-      gold += 15;
-      goldText.innerText = gold;
-      let currentWeapon = inventory.shift();
-      text.innerText = "You sold a " + currentWeapon + ".";
-      text.innerText += " In your inventory you have: " + inventory;
-    } else {
-        text.innerText = "Don't sell your only weapon!";
-    }
+	if (inventory.length > 1) {
+		gold += 15;
+		goldText.innerText = gold;
+		let currentWeapon = inventory.shift();
+		text.innerText = "You sold a " + currentWeapon + ".";
+		text.innerText += " In your inventory you have: " + inventory;
+	} else {
+		text.innerText = "Don't sell your only weapon!";
+	}
 }
 
 function buyWeapon() {
@@ -131,12 +120,16 @@ function buyWeapon() {
 			text.innerText = "You do not have enough gold to buy a weapon.";
 		}
 	} else {
-        text.innerText = "You already have the most powerful weapon!";
-        button2.innerText = "Sell weapon for 15 gold";
-        button2.onclick = sellWeapon;
-    }
+		text.innerText = "You already have the most powerful weapon!";
+		button2.innerText = "Sell weapon for 15 gold";
+		button2.onclick = sellWeapon;
+	}
 }
 
 function fightSlime() {}
 
 function fightBeast() {}
+
+function fightDragon() {
+	console.log("Fighting dragon.");
+}
