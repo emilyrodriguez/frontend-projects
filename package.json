@@ -1,0 +1,10 @@
+{	"name": "portfolio",
+	"license": "MIT",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	}
+
+}
