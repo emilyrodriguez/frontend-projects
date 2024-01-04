@@ -100,3 +100,4 @@ function getCaloriesFromInputs(list) {
 }
 
 addEntryButton.addEventListener("click", addEntry);
+calorieCounter.addEventListener("submit", calculateCalories);
